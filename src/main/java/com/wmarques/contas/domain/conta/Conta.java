@@ -59,6 +59,7 @@ public class Conta {
     }
     
     public void attValorPago(){
+        this.vlFinal = 0;
         for (Parcela parcela : listaParcela) {
             if(parcela.isPago()){
                 this.vlFinal += parcela.getVlPago();
