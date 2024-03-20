@@ -39,5 +39,6 @@ public class Parcela {
     public void pagar(double vlPago){
         this.isPago = true;
         this.vlPago = vlPago;
+        // TODO adicionar chamada para att valor total da conta.
     }
 }
