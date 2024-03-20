@@ -2,6 +2,7 @@ package com.wmarques.contas.domain.parcela;
 
 import com.wmarques.contas.domain.conta.Conta;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,8 @@ public class Parcela {
     private double vlParcela;
     private double vlPago;
     private String cdPagamento;
+
+    @Column(name = "icPago")
     private boolean isPago;
 
     public Parcela(Conta conta, double vlParcela, String cdPagamento) {
