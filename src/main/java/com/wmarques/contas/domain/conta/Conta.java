@@ -49,7 +49,7 @@ public class Conta {
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
 
-    private double vlFinal;
+    private double vlPago;
 
     public Conta(DadosCadastroConta dados, BeneficiarioRepository beneficiarioRepository, ParcelaRepository parcelaRepository) {
         this.beneficiario = beneficiarioRepository.findById(dados.idBeneficiario()).
@@ -66,10 +66,10 @@ public class Conta {
     }
     
     public void attValorPago(){
-        this.vlFinal = 0;
+        this.vlPago = 0;
         for (Parcela parcela : listaParcela) {
             if(parcela.isPago()){
-                this.vlFinal += parcela.getVlPago();
+                this.vlPago += parcela.getVlPago();
             }
         }
     }

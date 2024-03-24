@@ -3,6 +3,7 @@ package com.wmarques.contas.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +50,13 @@ public class ParcelaController {
         Parcela parcela = repository.findById(id).orElseThrow(() -> new RuntimeException("Parcela não encontrada com ID: " + id));
         return ResponseEntity.ok(new DadosListagemParcela(parcela));
     }
-
+    
+    @GetMapping("/pagas")
+    public ResponseEntity<Page<DadosListagemParcela>> listarContasPagas(@PageableDefault(size = 20, sort = {"dtVencimento"}, direction = Sort.Direction.DESC) Pageable paginacao) {
+        var page = repository.findAllByIcPagoIsTrue(paginacao).map(DadosListagemParcela::new);
+        return ResponseEntity.ok(page);
+    }
+    
     @PutMapping("/{id}/pagar")
     @Transactional
     public ResponseEntity<DadosListagemParcela> pagar(@PathVariable Long id, @RequestBody double vlPago) {
