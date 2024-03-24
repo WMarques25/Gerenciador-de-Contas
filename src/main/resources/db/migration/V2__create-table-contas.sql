@@ -15,7 +15,7 @@ create table parcelas(
     idConta BIGINT not null,
     vlParcela DECIMAL(10, 2),
     vlPago DECIMAL(10, 2),
-    isPago TINYINT(1),
+    icPago TINYINT(1),
     cdPagamento VARCHAR(60)
 
     constraint fk_parcelas_contas_id FOREIGN KEY (idConta) REFERENCES contas(id)

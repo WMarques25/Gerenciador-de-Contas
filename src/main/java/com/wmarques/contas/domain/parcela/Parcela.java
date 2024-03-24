@@ -1,6 +1,9 @@
 package com.wmarques.contas.domain.parcela;
 
+import java.time.LocalDate;
+
 import com.wmarques.contas.domain.conta.Conta;
+import com.wmarques.contas.domain.conta.ContaRepository;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
@@ -21,6 +24,7 @@ public class Parcela {
     @JoinColumn(name = "idConta")
     private Conta conta;
 
+    private LocalDate dtVencimento;
     private double vlParcela;
     private double vlPago;
     private String cdPagamento;
@@ -28,17 +32,27 @@ public class Parcela {
     @Column(name = "icPago")
     private boolean isPago;
 
-    public Parcela(Conta conta, double vlParcela, String cdPagamento) {
-        this.conta = conta;
-        this.vlParcela = vlParcela;
+    public Parcela(DadosCadastroParcela dados, ContaRepository contaRepository) {
+        this.conta = contaRepository.findById(dados.idConta()).orElseThrow(() -> new RuntimeException("Conta não encontrada com ID: " + dados.idConta()));
+        this.dtVencimento = dados.dtVencimento();
+        this.vlParcela = dados.vlParcela();
         this.vlPago = 0;
-        this.cdPagamento = cdPagamento;
+        this.cdPagamento = dados.cdPagamento();
+        this.isPago = false;
+    }
+
+    public Parcela(Conta conta, DadosParcelaConta dados) {
+        this.conta = conta;
+        this.dtVencimento = dados.dtVencimento();
+        this.vlParcela = dados.vlParcela();
+        this.vlPago = 0;
+        this.cdPagamento = dados.cdPagamento();
         this.isPago = false;
     }
 
     public void pagar(double vlPago){
         this.isPago = true;
         this.vlPago = vlPago;
-        // TODO adicionar chamada para att valor total da conta.
+        this.conta.attValorPago();
     }
 }

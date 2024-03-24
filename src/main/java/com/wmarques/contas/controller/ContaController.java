@@ -9,7 +9,7 @@ import com.wmarques.contas.domain.conta.ContaRepository;
 
 @RestController
 @RequestMapping("/contas")
-public class ContasController {
+public class ContaController {
 
     @Autowired
     private ContaRepository repository;

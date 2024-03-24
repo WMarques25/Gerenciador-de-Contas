@@ -9,4 +9,6 @@ public interface BeneficiarioRepository extends JpaRepository<Beneficiario, Long
     Page<Beneficiario> findAll(Pageable pageable);
 
     Page<Beneficiario> findByNmBeneficiarioContaining(String nmBeneficiario, Pageable pageable);
+
+    Page<Beneficiario> findByNmFantasiaContaining(String nmFantasia, Pageable pageable);
 }

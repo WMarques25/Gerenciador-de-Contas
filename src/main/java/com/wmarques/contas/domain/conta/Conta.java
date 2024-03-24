@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.wmarques.contas.domain.beneficiario.Beneficiario;
+import com.wmarques.contas.domain.beneficiario.BeneficiarioRepository;
+import com.wmarques.contas.domain.parcela.DadosParcelaConta;
 import com.wmarques.contas.domain.parcela.Parcela;
+import com.wmarques.contas.domain.parcela.ParcelaRepository;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -48,13 +51,17 @@ public class Conta {
 
     private double vlFinal;
 
-    public Conta(Beneficiario beneficiario, double vlConta, TipoPagamento tipoPagamento, List<Parcela> listaParcela) {
-        this.beneficiario = beneficiario;
-        this.tipoPagamento = tipoPagamento;
-        this.listaParcela = listaParcela;
+    public Conta(DadosCadastroConta dados, BeneficiarioRepository beneficiarioRepository, ParcelaRepository parcelaRepository) {
+        this.beneficiario = beneficiarioRepository.findById(dados.idBeneficiario()).
+                orElseThrow(() -> new RuntimeException(
+                    "Beneficiário não encontrado com ID: " + dados.idBeneficiario()));
+        this.tipoPagamento = dados.tipoPagamento();
         this.vlConta = 0;
-        for (Parcela p : listaParcela) {
-            this.vlConta += p.getVlParcela();
+        for (DadosParcelaConta p : dados.listaParcela()) {
+            var parcela = new Parcela(this, p);
+            this.listaParcela.add(parcela);
+            this.vlConta += parcela.getVlParcela();
+            parcelaRepository.save(parcela);
         }
     }
     
