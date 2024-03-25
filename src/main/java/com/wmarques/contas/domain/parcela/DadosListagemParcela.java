@@ -18,7 +18,7 @@ public record DadosListagemParcela(
                 parcela.getCdPagamento(),
                 parcela.getVlParcela(),
                 parcela.getVlPago(),
-                parcela.isPago()
+                parcela.isIcPago()
             );
         }
 }

@@ -37,18 +37,20 @@ public class Conta {
     private Long id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idBeneficiario")
+    @JoinColumn(name = "id_Beneficiario")
     private Beneficiario beneficiario;
 
+    @Column(name = "vl_Conta")
     private double vlConta;
     
     @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Parcela> listaParcela = new ArrayList<>();
 
-    @Column(name = "dsTipoPagamento")
+    @Column(name = "ds_Tipo_Pagamento")
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
 
+    @Column(name = "vl_Pago")
     private double vlPago;
 
     public Conta(DadosCadastroConta dados, BeneficiarioRepository beneficiarioRepository, ParcelaRepository parcelaRepository) {
@@ -68,7 +70,7 @@ public class Conta {
     public void attValorPago(){
         this.vlPago = 0;
         for (Parcela parcela : listaParcela) {
-            if(parcela.isPago()){
+            if(parcela.isIcPago()){
                 this.vlPago += parcela.getVlPago();
             }
         }

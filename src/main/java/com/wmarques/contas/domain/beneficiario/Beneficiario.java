@@ -1,5 +1,6 @@
 package com.wmarques.contas.domain.beneficiario;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,11 @@ public class Beneficiario {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nm_Beneficiario")
     private String nmBeneficiario;
+
+    @Column(name = "nm_Fantasia")
     private String nmFantasia;
 
     public Beneficiario(DadosCadastroBeneficiario dados) {

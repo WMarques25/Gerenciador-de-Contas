@@ -14,7 +14,7 @@ public record DadosListagemConta(
     public static DadosListagemConta fromConta(Conta conta) {
         int qtParcelasPendentes = 0;
         for(Parcela p : conta.getListaParcela()) {
-            if (!p.isPago()) {
+            if (!p.isIcPago()) {
                 qtParcelasPendentes++;
             }
         }
