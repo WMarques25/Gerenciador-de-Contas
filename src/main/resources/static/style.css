@@ -1,0 +1,18 @@
+h1{
+    color: rgb(207, 199, 199);
+}
+
+body {
+    background-color: rgb(32, 32, 32);
+}
+
+.botao {
+    color: rgb(255, 255, 255);
+    background-color: rgb(83, 87, 86);
+    width: 10%;
+    border-radius: 10cap;
+    border: 0cap;
+    font-size: large;
+    font-style: italic;
+    
+}
