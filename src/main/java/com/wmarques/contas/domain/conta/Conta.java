@@ -53,6 +53,8 @@ public class Conta {
     @Column(name = "vl_Pago")
     private double vlPago;
 
+    //TODO Acrescentar Tipo de Conta, para separar as despezas.
+
     public Conta(DadosCadastroConta dados, BeneficiarioRepository beneficiarioRepository, ParcelaRepository parcelaRepository) {
         this.beneficiario = beneficiarioRepository.findById(dados.idBeneficiario()).
                 orElseThrow(() -> new RuntimeException(

@@ -14,7 +14,7 @@ public class HtmlController {
 
     @GetMapping
     public ResponseEntity<Resource> getPagina(){
-        Resource resource = new ClassPathResource("/templates/test.html");
+        Resource resource = new ClassPathResource("/templates/index.html");
         return ResponseEntity.ok().contentType(MediaType.TEXT_HTML).body(resource);
     }
 }
