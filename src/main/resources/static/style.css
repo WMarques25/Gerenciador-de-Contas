@@ -4,7 +4,7 @@ h1{
 
 body {
     background-color: rgb(32, 32, 32);
-    padding-left: 10%;
+    margin: 0%;
 }
 
 .botao {
@@ -17,7 +17,6 @@ body {
     font-size: large;
     font-style: italic;
     animation: forwards;
-    
 }
 
 .sidebar {
@@ -29,12 +28,12 @@ body {
     background-color: #333;
     padding-top: 20px;
     transition: 0.5s;
-    z-index: 1;
+    z-index: 2;
 }
 .sidebar ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding-top: 0px;
+    margin-top: 50px;
 }
 .sidebar ul li {
     padding: 10px;
@@ -57,8 +56,8 @@ th, td {
 .open-btn {
     position: fixed;
     top: 20px;
-    left: 10px;
-    z-index: 2;
+    left: 20px;
+    z-index: 4;
 }
 .custom-image {
     width: 30px;
@@ -73,4 +72,31 @@ th, td {
 }
 .navegacao.selecionado {
     background-color: #241d46;
+}
+.header{
+    width: auto;
+    height: 60px;
+    background-color: #241d46;
+    z-index: 3;
+    position: relative;
+    opacity: 70%;
+}
+.content {
+    padding-left: 8%;
+}
+.select-cadastro {
+    align-self: center;
+    font-size: x-large;
+    text-align: center;
+    border-radius: 10cap;
+    border: #ffffff, 1px;
+    color: #ffffff;
+    background-color: #241d46;
+    width: 70%;
+    height: 3cap;
+}
+
+label {
+    color: #ffffff;
+    font-size: xx-large;
 }
