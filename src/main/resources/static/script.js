@@ -55,8 +55,8 @@ function pagCadastrar(main) {
             <option value="tipo">Tipo de Conta</option>
         </select>
     </div>
-    <div class="formulario" id="formulario">
-    </div>
+    <form class="formulario" id="formulario">
+    </form>
         `;
 
 }
@@ -84,7 +84,11 @@ function formularioBeneficiario(){
     var formulario = document.getElementById("formulario");
     formulario.innerHTML = ""
     formulario.innerHTML = `
-    <h1>Formulario benef</h1>
+    <label for="beneficiario">Beneficiário<br></label> 
+    <input type="text" id="inputBenef" name="nmBeneficiario"><br><br>
+    <label for="beneficiario">Nome Fantasia<br></label> 
+    <input type="text" id="inputBenef" name="nmFantasia"><br>
+    <button class="enviar" form="postBenef" type="button" onclick="enviarFormulario(this)">Enviar</button>
     `
 }
 function formularioConta() {
@@ -100,4 +104,29 @@ function formularioTipo() {
     formulario.innerHTML = `
     <h1>Formulario Tipo</h1>
     `
+}
+
+function enviarFormulario(btnEnviar){
+    // Obter referência ao formulário
+    var formulario = document.getElementById("formulario");
+
+    // Criar objeto para armazenar os dados do formulário
+    var dadosFormulario = {};
+
+    // Iterar sobre os elementos do formulário
+    for (var i = 0; i < formulario.elements.length; i++) {
+        var elemento = formulario.elements[i];
+        if (elemento.name) { // Verificar se o elemento tem um nome
+            dadosFormulario[elemento.name] = elemento.value;
+            elemento.value = "";
+        }
+    }
+
+    // Transformar objeto em JSON
+    var dadosJSON = JSON.stringify(dadosFormulario);
+
+    alert("Cadastro Realizado!\n\n" + dadosJSON);
+
+    // TODO escolher uri da api.
+    console.log("Dados do formulário em JSON:", dadosJSON);
 }

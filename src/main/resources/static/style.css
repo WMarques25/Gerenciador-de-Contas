@@ -1,5 +1,10 @@
 h1{
     color: rgb(207, 199, 199);
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 300%;
+    margin-top: 0%;
+    margin-bottom: 2%;
 }
 
 body {
@@ -95,8 +100,40 @@ th, td {
     width: 70%;
     height: 3cap;
 }
+input {
+    align-self: center;
+    font-size: x-large;
+    text-align: left;
+    padding-left: 5%;
+    border-radius: 10cap;
+    border: #ffffff, 1px;
+    color: #000000;
+    background-color: #ffffff;
+    width: 70%;
+    height: 3cap;
+}
 
 label {
     color: #ffffff;
     font-size: xx-large;
+    text-align: left;
+    display: block;
+    padding-left: 10%;
+}
+
+.formulario {
+    padding-top: 5%;
+    text-align: center;
+}
+
+.enviar{
+    font-size: x-large;
+    text-align: center;
+    border-radius: 10cap;
+    border: #ffffff, 1px;
+    color: #ffffff;
+    background-color: #241d46;
+    width: 20%;
+    height: 2cap;
+    margin-top: 10%;
 }
