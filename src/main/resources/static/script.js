@@ -92,12 +92,34 @@ function formularioBeneficiario(){
     `
 }
 function formularioConta() {
+    // TODO Buscar os beneficiarios, id e nmFantasia.
+    var benefs;
     var formulario = document.getElementById("formulario");
     formulario.innerHTML = ""
     formulario.innerHTML = `
-    <h1>Formulario Conta</h1>
+    <label for="beneficiario">Beneficiário<br></label> 
+    <div style="text-align: center;">
+        <select class="select-cadastro" id="benef-drop" name="benef-drop">
+            <option value="">Selecione</option>
+    `
+    // TODO Adicionar os beneficiarios | <option value="${id}">${nmFantasia}</option>
+    formulario.innerHTML += `
+        </select>
+    </div>
+    <br><br>
+    <label for="conta">Tipo de Pagamento<br></label> 
+    <div style="text-align: center;">
+        <select class="select-cadastro" id="benef-drop" name="benef-drop">
+            <option value="">Selecione</option>
+            <option value="pix">PIX</option>
+            <option value="faturado">Faturado</option>
+        </select>
+    </div>
+    <br>
+    <button class="enviar" form="postBenef" type="button" onclick="enviarFormulario(this)">Enviar</button>
     `
 }
+
 function formularioTipo() {
     var formulario = document.getElementById("formulario");
     formulario.innerHTML = ""
@@ -125,8 +147,16 @@ function enviarFormulario(btnEnviar){
     // Transformar objeto em JSON
     var dadosJSON = JSON.stringify(dadosFormulario);
 
-    alert("Cadastro Realizado!\n\n" + dadosJSON);
+    axios.post("http://localhost:2508/beneficiarios", dadosJSON, {
+        headers: {
+            'Content-Type': 'application/json'
+        }})
+        //.then(response => console.log(response.data))
+        .then(response => alert("Cadastro Realizado: \n\nid: "+ 
+            response.data.id + "\nBeneficiario: " + response.data.nmBeneficiario + 
+            "\nFantasia: " + response.data.nmFantasia))
+        .catch(error => console.log("Erro: ", error));
 
-    // TODO escolher uri da api.
     console.log("Dados do formulário em JSON:", dadosJSON);
+
 }

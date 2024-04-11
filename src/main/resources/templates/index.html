@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contas</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/script.js"></script>
 </head>
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            criarPagina('cadastrar');
+        });
+    </script>
     <img class="open-btn custom-image" src="/img/icons8-show-sidepanel-50.png" alt="Sidebar by Icons8" onclick="toggleSidebar()">
 
     <div class="sidebar" id="sidebar">
