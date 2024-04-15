@@ -4,7 +4,7 @@ h1{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 300%;
     margin-top: 0%;
-    margin-bottom: 2%;
+    margin-bottom: 2px;
 }
 
 body {
@@ -104,7 +104,7 @@ input {
     align-self: center;
     font-size: x-large;
     text-align: left;
-    padding-left: 5%;
+    padding-left: 20px;
     border-radius: 10cap;
     border: #ffffff, 1px;
     color: #000000;
@@ -119,10 +119,11 @@ label {
     text-align: left;
     display: block;
     padding-left: 10%;
+    padding-top: 5px;
 }
 
 .formulario {
-    padding-top: 5%;
+    padding-top: 4px;
     text-align: center;
 }
 
@@ -135,5 +136,10 @@ label {
     background-color: #241d46;
     width: 20%;
     height: 2cap;
-    margin-top: 10%;
+    margin-top: 10px;
+}
+
+.input-num {
+    padding-left: 0%;
+    text-align: center;
 }

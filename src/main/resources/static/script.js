@@ -99,25 +99,63 @@ function formularioConta() {
     formulario.innerHTML = `
     <label for="beneficiario">Beneficiário<br></label> 
     <div style="text-align: center;">
-        <select class="select-cadastro" id="benef-drop" name="benef-drop">
+        <select class="select-cadastro" id="benef-drop" name="idBeneficiaro">
             <option value="">Selecione</option>
     `
     // TODO Adicionar os beneficiarios | <option value="${id}">${nmFantasia}</option>
     formulario.innerHTML += `
         </select>
     </div>
-    <br><br>
-    <label for="conta">Tipo de Pagamento<br></label> 
-    <div style="text-align: center;">
-        <select class="select-cadastro" id="benef-drop" name="benef-drop">
-            <option value="">Selecione</option>
-            <option value="pix">PIX</option>
-            <option value="faturado">Faturado</option>
-        </select>
+    <div>
+        <div style="display: inline-block; text-align: center; width: 49%;">
+        <label for="conta">Tipo de Pagamento<br></label> 
+            <select class="select-cadastro" id="pag-drop" onchange="formularioParela(this)" name="tipoPagamento">
+                <option value="">Selecione</option>
+                <option value="PIX">PIX</option>
+                <option value="FATURADO">Faturado</option>
+            </select>
+        </div>
+        <div style="display: inline-block; text-align: center; width: 49%; align: right;">
+        <label for="conta">Tipo de Conta<br></label>
+            <select class="select-cadastro" id="conta-d
+            <br>rop" name="nmTipoConta">
+                <option value="">Selecione</option>
+    `
+    // TODO Adicionar os tipos de conta | <option value="${id}">${nmTipoConta}</option>
+    formulario.innerHTML += `
+            </select>
+        </div>
+    </div>
+    <div id="formularioParcela">
     </div>
     <br>
+    `
+
+    // TODO Tratar envio
+    formulario.innerHTML += `
     <button class="enviar" form="postBenef" type="button" onclick="enviarFormulario(this)">Enviar</button>
     `
+}
+
+function formularioParela(selecao){
+    var parcelas = document.getElementById("formularioParcela");
+    if(selecao.value == "FATURADO"){
+        parcelas.innerHTML += `
+        <label for="qtParcela">Parcelas<br></label>
+        <input class="input-num" style="display: flex; margin-left: 7.5%; width: 15%;" type="number" id="qtParcela" min="0" max="48" onchange="nParcelas(this)">
+        <div id="nParcelas">
+        </div>`
+    }
+}
+
+function nParcelas(n){
+    var nParcela = document.getElementById("nParcelas");
+    nParcela.innerHTML = "";
+    for(var i = 0; i<n.value;i++){
+        nParcela.innerHTML += `
+        <h2> AAAA </h2>
+        `
+    }
 }
 
 function formularioTipo() {
